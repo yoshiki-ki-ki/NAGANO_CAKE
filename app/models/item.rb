@@ -6,5 +6,5 @@ class Item < ApplicationRecord
   has_many :order_details, dependent: :destroy
   
   ##アソシエーション　(genre)1:N(items)
-  belong_to :genre
+  belongs_to :genre
 end

@@ -1,6 +1,6 @@
 class OrderDetail < ApplicationRecord
   ##アソシエーション　(item)1:N(order_details)
-  belong_to :item
+  belongs_to :item
   ##アソシエーション　(order)1:N(order_details)
-  belong_to :order
+  belongs_to :order
 end
