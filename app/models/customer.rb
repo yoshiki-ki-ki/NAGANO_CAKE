@@ -5,7 +5,7 @@ class Customer < ApplicationRecord
          :recoverable, :rememberable, :validatable
          
   ##アソシエーション　(customer)1:N(addressse,cart_items,orders)
-  has_many :addresses, depnendent: :destroy
-  has_many :cart_items, depnendent: :destroy
-  has_many :orders, depnendent: :destroy
+  has_many :addresses, dependent: :destroy
+  has_many :cart_items, dependent: :destroy
+  has_many :orders, dependent: :destroy
 end
