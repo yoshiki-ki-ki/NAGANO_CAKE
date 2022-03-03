@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  ##顧客
   namespace :public do
     get 'addresses/index'
     get 'addresses/edit'
@@ -25,6 +26,8 @@ Rails.application.routes.draw do
     get 'homes/top'
     get 'homes/about'
   end
+  
+  ##管理者
   namespace :admin do
     get 'orders/show'
   end
