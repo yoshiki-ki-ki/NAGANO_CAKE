@@ -41,7 +41,7 @@ Rails.application.routes.draw do
     get 'genres/edit'
   end
   namespace :admin do
-    get 'items/index'
+    get '/items' => 'items#index'
     get 'items/new'
     get 'items/show'
     get 'items/edit'
