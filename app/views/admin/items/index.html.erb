@@ -5,9 +5,9 @@
 <p>税込価格</p>
 <p>ジャンル</p>
 <p>ステータス</p>
-<%= @items.each do |item| %>
+<% @items.each do |item| %>
   <span><%= item.id %></span>
-  <span><%= item.nema %></span>
+  <span><%= item.name %></span>
   <span><%= item.price %></span>
   <span><%= item.genre.name %></span>
   <% if item.is_active == true %>
