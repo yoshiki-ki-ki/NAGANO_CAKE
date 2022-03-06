@@ -1,2 +1,24 @@
-<h1>Admin::Homes#top</h1>
-<p>Find me in app/views/admin/homes/top.html.erb</p>
+<h2>注文履歴一覧</h2>
+
+<P>購入日時</P>
+<p>購入者</p>
+<p>注文個数</p>
+<p>注文ステータス</p>
+<% @orders.each do |orders| %>
+  <span><%= @orders.created_at %></span>
+  <span><%= @order.customer.last_name %><%= @order.customer.first_name %></span>
+  <span><%= @orders.order_details.amount %></span>
+
+　<!--enum未実装のため-->
+  <!--<% if @orders.order_status == 0 %>-->
+  <!--  入金待ち-->
+  <!--<% elsif @orders.order_status == 1 %>-->
+  <!--  入金確認-->
+  <!--<% elsif @orders.order_status == 2 %>-->
+  <!--　製作中-->
+  <!--<% elsif @orders.order_status == 3 %>-->
+  <!--  発送準備中-->
+  <!--<% elsif @orders.order_status == 4 %>-->
+  <!--  発送済み-->
+  <!--<% end %>-->
+<% end %>
