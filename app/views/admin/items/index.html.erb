@@ -10,5 +10,9 @@
   <span><%= item.nema %></span>
   <span><%= item.price %></span>
   <span><%= item.genre.name %></span>
-  <span><%= item.is_active %></span>
+  <% if item.is_active == true %>
+    販売中
+  <% else %>
+    販売停止中
+  <% end %>
 <% end %>

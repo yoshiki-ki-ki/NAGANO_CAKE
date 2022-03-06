@@ -36,6 +36,7 @@ Rails.application.routes.draw do
     get 'items/new'
     get 'items/show'
     get 'items/edit'
+    resources :items, only: [:index, :new, :create, :show, :edit, :update]
 
     get '/' => 'homes#top'
   end
