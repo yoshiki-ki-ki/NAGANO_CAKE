@@ -24,22 +24,10 @@ Rails.application.routes.draw do
   
   ##管理者
   namespace :admin do
-    get 'orders/show'
- 
-    get 'customers/index'
-    get 'customers/show'
-    get 'customers/edit'
-    
+    resources :orders, only: [:show]
     resources :customers, only: [:index, :show, :edit, :update]
-
     resources :genres, only: [:index, :create, :edit, :update]
-
-    get '/items' => 'items#index'
-    get 'items/new'
-    get 'items/show'
-    get 'items/edit'
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
-
     get '/' => 'homes#top'
   end
   # 顧客用
