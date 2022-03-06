@@ -29,6 +29,8 @@ Rails.application.routes.draw do
     get 'customers/index'
     get 'customers/show'
     get 'customers/edit'
+    
+    resources :customers, only: [:index, :show, :edit, :update]
 
     resources :genres, only: [:index, :create, :edit, :update]
 
