@@ -11,6 +11,27 @@
   </head>
 
   <body>
+    <header>
+      <% if admin_signed_in? %>
+      <%= link_to "商品一覧", 'public/homes/about' %>
+      <%= link_to "会員一覧", 'public/homes/about' %>
+      <%= link_to "注文履歴一覧", 'public/homes/about' %>
+      <%= link_to "ジャンル一覧", 'public/homes/about' %>
+      <%= link_to "ログアウト", 'public/homes/about' %>
+      <% elsif customer_signed_in? %>
+      <%= link_to "マイページ", 'public/homes/about' %>
+      <%= link_to "商品一覧", 'public/homes/about' %>
+      <%= link_to "カート", 'public/homes/about' %>
+      <%= link_to "ログアウト", 'public/homes/about' %>
+      <% else %>
+        <li>
+          <%= link_to "About", 'public/homes/about' %>
+          <%= link_to "商品一覧", 'public/items/index'%>
+          <%= link_to "新規登録", 'public/customer_signed_up'%>
+          <%= link_to "ログイン", 'public/customer_signed_in'%>
+        </li>
+      <% end %>
+    </header>
     <%= yield %>
   </body>
 </html>
