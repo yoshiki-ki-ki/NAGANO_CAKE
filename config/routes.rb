@@ -1,25 +1,22 @@
 Rails.application.routes.draw do
+  
+  root to: 'public/homes#top'
+      
   ##顧客
   namespace :public do
-    get 'addresses/index'
-    get 'addresses/edit'
+    resources :addresses, only: [:index, :edit, :update]
 
-    get 'orders/new'
     get 'orders/complete'
-    get 'orders/index'
-    get 'orders/show'
+    resources :orders, only: [:new, :index, :show]
 
-    get 'cart_items/index'
+    get '/cart_items' => 'cart_items#index'
 
-    get 'customers/show'
-    get 'customers/edit'
     get 'customers/out_confirmation'
+    resources :customers, only: [:show, :edit, :update]
 
-    get 'items/index'
-    get 'items/show'
+    resources :items, only: [:index, :show]
 
-    get 'homes/top'
-    get 'homes/about'
+    get '/about' => 'homes#about'
   end
   
   ##管理者
@@ -28,7 +25,7 @@ Rails.application.routes.draw do
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
-    get '/' => 'homes#top'
+    get '/admin' => 'homes#top'
   end
   # 顧客用
   # URL /customers/sign_in ...
