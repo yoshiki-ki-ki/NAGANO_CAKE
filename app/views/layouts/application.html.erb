@@ -10,25 +10,36 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <header>
-      <% if admin_signed_in? %>
-        <%= link_to "商品一覧", admin_items_path %>
-        <%= link_to "会員一覧", admin_customers_path %>
-        <%= link_to "注文履歴一覧", admin_homes_top_path %>
-        <%= link_to "ジャンル一覧", admin_genres_path %>
-        <%= link_to "ログアウト",  destroy_admin_session_path, method: :delete %>
-      <% elsif customer_signed_in? %>
-        <%= link_to "マイページ", public_customer_path(current_customer.id) %>
-        <%= link_to "商品一覧", public_items_path %>
-        <%= link_to "カート", public_cart_items_path(current_customer.id) %>
-        <%= link_to "ログアウト",  destroy_customer_session_path, method: :delete %>
-      <% else %>
-        <%= link_to "About", public_about_path %>
-        <%= link_to "商品一覧", public_items_path %>
-        <%= link_to "新規登録", new_customer_registration_path %>
-        <%= link_to "ログイン", new_customer_session_path %>
-      <% end %>
+  <body class="d-flex flex-column vh-100">
+    <header class="shadow-sm">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+          <h2 class="navbar-brand">nagano_cake</h2>
+          <% if admin_signed_in? %>
+            <ul class="nav justify-content-end">
+              <li class="nav-item btn btn-outline-light"><%= link_to "商品一覧", admin_items_path, class: 'nav-link text-dark' %></li>
+              <li class="nav-item btn btn-outline-light"><%= link_to "会員一覧", admin_customers_path, class: 'nav-link text-dark' %></li>
+              <li class="nav-item btn btn-outline-light"><%= link_to "注文履歴一覧", admin_homes_top_path, class: 'nav-link text-dark' %></li>
+              <li class="nav-item btn btn-outline-light"><%= link_to "ジャンル一覧", admin_genres_path, class: 'nav-link text-dark' %></li>
+              <li class="nav-item btn btn-outline-light"><%= link_to "ログアウト",  destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' %></li>
+            </ul>
+          <% elsif customer_signed_in? %>
+            <ul class="nav justify-content-end">
+              <li class="nav-item btn btn-outline-light"><%= link_to "マイページ", public_customer_path(current_customer.id), class: 'nav-link text-dark' %></li>
+              <li class="nav-item btn btn-outline-light"><%= link_to "商品一覧", public_items_path, class: 'nav-link text-dark' %></li>
+              <li class="nav-item btn btn-outline-light"><%= link_to "カート", public_cart_items_path(current_customer.id), class: 'nav-link text-dark' %></li>
+              <li class="nav-item btn btn-outline-light"><%= link_to "ログアウト",  destroy_customer_session_path, method: :delete, class: 'nav-link text-dark' %></li>
+            </ul>
+          <% else %>
+            <ul class="nav justify-content-end">
+              <li class="nav-item btn btn-outline-light"><%= link_to "About", public_about_path, class: 'nav-link text-dark' %></li>
+              <li class="nav-item btn btn-outline-light"><%= link_to "商品一覧", public_items_path, class: 'nav-link text-dark' %></li>
+              <li class="nav-item btn btn-outline-light"><%= link_to "新規登録", new_customer_registration_path, class: 'nav-link text-dark' %></li>
+              <li class="nav-item btn btn-outline-light"><%= link_to "ログイン", new_customer_session_path, class: 'nav-link text-dark' %></li>
+            </ul>
+          <% end %>
+        </div>
+      </nav>
     </header>
     <%= yield %>
   </body>
