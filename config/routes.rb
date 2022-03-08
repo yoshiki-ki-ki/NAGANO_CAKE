@@ -25,7 +25,7 @@ Rails.application.routes.draw do
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
-    get '/' => 'homes#top'
+    get '/' => 'homes#top' 
   end
   # 顧客用
   # URL /customers/sign_in ...
