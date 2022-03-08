@@ -1,20 +1,32 @@
-<h2>商品一覧</h2>
-
-<P>商品ID</P>
-<p>商品名</p>
-<p>税込価格</p>
-<p>ジャンル</p>
-<p>ステータス</p>
-<% @items.each do |item| %>
-  <span><%= item.id %></span>
-  <span><%= item.name %></span>
-  <span><%= item.price %></span>
-  <span><%= item.genre.name %></span>
-  <% if item.is_active == true %>
-    販売中
-  <% else %>
-    販売停止中
-  <% end %>
-<% end %>
-
-<%= paginate @items %>
+<div class="container">
+  <h3>商品一覧</h3>
+  <div class="row mt-5">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>商品ID</th>
+          <th>商品名</th>
+          <th>税込価格</th>
+          <th>ジャンル</th>
+          <th>ステータス</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @items.each do |item| %>
+          <tr>
+            <td><%= item.id %></td>
+            <td><%= item.name %></td>
+            <td><%= item.price %></td>
+            <td><%= item.genre.name %></td>
+            <% if item.is_active == true %>
+              <td class="text-success">販売中</td>
+            <% else %>
+              <td class="text-secondary">販売停止中</td>
+            <% end %>
+          </tr> 
+        <% end %>
+        <%= paginate @items %>
+      </tbody>
+    </table>
+  </div>
+</div>
