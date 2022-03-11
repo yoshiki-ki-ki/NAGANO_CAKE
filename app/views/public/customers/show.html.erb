@@ -1,2 +1,7 @@
-<h1>Public::Customers#show</h1>
-<p>Find me in app/views/public/customers/show.html.erb</p>
+<h1>マイページ</h1>
+<h3>登録情報</h3>
+<%= link_to '編集する', edit_public_customer_path(current_customer.id), class: "btn btn-success btn-lg" %>
+<h3>配送先</h3>
+<%= link_to '一覧を見る', public_addresses_path(current_customer.id), class: "btn btn-primary btn-lg" %>
+<h3>注文履歴</h3>
+<%= link_to '一覧を見る', public_orders_path(current_customer.id), class: "btn btn-primary btn-lg" %>

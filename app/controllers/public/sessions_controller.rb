@@ -27,9 +27,9 @@ class Public::SessionsController < Devise::SessionsController
     # アカウントを取得できなかった場合、以降の処理を行わずに終了
     return if !@customer
     # 【処理2】取得したアカウントのパスワードと入力されたパスワードが一致しているか判断
-    if @customer.valid_password?(params[:customer][:password]) && (@customer.is_active == false)
+    if @customer.valid_password?(params[:customer][:password]) && (@customer.is_active == true)
       # 【処理3】false→createアクションへ
-      redirect_to new_end_user_registration_path
+      redirect_to new_customer_registration_path
     end
   end
 
