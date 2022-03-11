@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     get '/cart_items' => 'cart_items#index'
 
     get 'customers/out_confirmation'
+    patch 'customers/out_update'
     resources :customers, only: [:show, :edit, :update]
 
     resources :items, only: [:index, :show]
