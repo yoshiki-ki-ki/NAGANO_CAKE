@@ -18,4 +18,6 @@
   <%= address.postal_code %>
   <%= address.address %>
   <%= address.name %>
+  <%= link_to '編集する', edit_public_addresses_path(address.id) %>
+  <%= link_to '削除する', destroy_public_addresses_path(address.id), method: :delete %>
 <% end %>

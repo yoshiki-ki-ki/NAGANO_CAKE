@@ -1,2 +1,14 @@
-<h1>Public::Items#index</h1>
-<p>Find me in app/views/public/items/index.html.erb</p>
+<th>ジャンル検索</th>
+
+<% @genres.each do |genre| %>
+  <%= genre.name %>
+<% end %>
+
+<h2>商品一覧</h2>
+<% @items.each do |item| %>
+  <%= link_to public_item_path(item.id) do %>
+    <%= image_tag item.image, size: "100x100" %>
+  <% end %>
+  <%= item.name %>
+  <%= item.price %>
+<% end %>
