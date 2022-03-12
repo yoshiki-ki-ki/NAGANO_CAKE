@@ -4,7 +4,7 @@ Rails.application.routes.draw do
       
   ##顧客
   namespace :public do
-    resources :addresses, only: [:index, :edit, :update]
+    resources :addresses, only: [:index, :create, :edit, :update]
 
     get 'orders/complete'
     resources :orders, only: [:new, :index, :show]
