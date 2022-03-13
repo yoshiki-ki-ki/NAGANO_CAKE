@@ -7,4 +7,10 @@ class Item < ApplicationRecord
   
   ##アソシエーション　(genre)1:N(items)
   belongs_to :genre
+  
+    # 消費税を求めるメソッド
+  def with_tax_price
+    (price * 1.1).floor
+  end
+  
 end

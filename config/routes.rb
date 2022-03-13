@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     get 'orders/complete'
     resources :orders, only: [:new, :index, :show]
 
-    get '/cart_items' => 'cart_items#index'
+    resources :cart_items, only: [:index, :create]
 
     get 'customers/out_confirmation'
     patch 'customers/out_update'

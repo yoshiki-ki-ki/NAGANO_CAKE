@@ -10,8 +10,8 @@
 
   <td><%= @item.introduction %></td>
 
-  <td>税込み価格<br>(税抜価格)</td>
-  <td><%= @item.price %>円</td>
+  <td>税込み価格<br>(税込)</td>
+  <td><%= @item.with_tax_price %>円</td>
 
 <% if @item.is_active == false %>
   <%= form_with model: @cart_item, url: public_cart_items_path, method: :post do |f| %>
