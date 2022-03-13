@@ -1,7 +1,9 @@
 <th>ジャンル検索</th>
 
 <% @genres.each do |genre| %>
-  <%= genre.name %>
+  <%= link_to public_items_path(name: genre.id) do %>
+    <%= genre.name %>
+  <% end %>
 <% end %>
 
 

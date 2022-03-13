@@ -1,9 +1,9 @@
 <h2>会員情報編集</h2>
 
-<%= form_with model: @customer, url: admin_customer_path, method: :patch do |f| %>
+<%= form_with model: @customer, url: public_customer_path, method: :patch do |f| %>
 
   <%= f.label :氏名 %>
-  <%= f.text_field :name %><%= f.text_field :name %>
+  <%= f.text_field :last_name %><%= f.text_field :first_name %>
   
   <%= f.label :フリガナ %>
   <%= f.text_field :last_name_kana %><%= f.text_field :first_name_kana %>

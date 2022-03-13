@@ -1,7 +1,9 @@
 class Public::ItemsController < ApplicationController
   def index
-    @items = Item.all
     @genres = Genre.all
+    # nameに何かが入っていれば「Genre.find(params[:name])」該当のジャンルを表示させる。
+    # nameに何も入っていなければItem.allすべての商品を表示
+    @items = params[:name].present? ? Genre.find(params[:name]).items : Item.all
   end
 
   def show

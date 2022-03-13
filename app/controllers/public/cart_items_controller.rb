@@ -7,6 +7,7 @@ class Public::CartItemsController < ApplicationController
   
   def create
     @cart_item = CartItem.new(cart_item_params)
+    # 外部キーに値を入れなければデータの保存ができない
     @cart_item.customer_id = current_customer.id
     @cart_item.save
     redirect_to public_items_path, notice: "カートに追加されました"

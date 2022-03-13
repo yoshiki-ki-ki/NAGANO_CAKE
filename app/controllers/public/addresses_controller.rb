@@ -6,6 +6,7 @@ class Public::AddressesController < ApplicationController
   
   def create
     @address = Address.new(address_params)
+    # 外部キーに値を入れなければデータの保存ができない
     @address.customer_id = current_customer.id
     @address.save
     redirect_to public_addresses_path(current_customer.id)

@@ -8,8 +8,11 @@
         <tbody>
           <% @genres.each do |genre| %>
           <tr>
-            <!--ジャンル別の商品一覧画面の作成をしていないためひとまずジャンル名だけを表示-->
-            <td><%= genre.name %></td>
+            <td>
+              <%= link_to public_items_path(name: genre.id) do %>
+                <%= genre.name %>
+              <% end %>
+            </td>
           </tr>
           <% end %>
         </tbody>
