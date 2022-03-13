@@ -8,10 +8,9 @@
 
 <% @cart_items.each do |cart_item| %>
   <%= cart_item.item.name %>
-  <%= cart_item.item.price %>
   <%= cart_item.item.with_tax_price %>
+  <%= cart_item.amount %>
   <%= cart_item.subtotal %>
 <% end %>
 <th>合計金額</th>
 ¥<%= @total_price.round.to_s(:delimited)%>
-
