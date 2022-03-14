@@ -7,7 +7,8 @@ Rails.application.routes.draw do
     resources :addresses, only: [:index, :create, :edit, :update, :destroy]
 
     get 'orders/complete'
-    resources :orders, only: [:new, :index, :show]
+    post 'orders/order_confirmation'
+    resources :orders, only: [:new, :create, :index, :show]
 
     resources :cart_items, only: [:index, :create, :update, :destroy]
     delete 'cart_items/all_destroy'
