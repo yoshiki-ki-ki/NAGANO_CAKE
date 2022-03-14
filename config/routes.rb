@@ -9,7 +9,8 @@ Rails.application.routes.draw do
     get 'orders/complete'
     resources :orders, only: [:new, :index, :show]
 
-    resources :cart_items, only: [:index, :create]
+    resources :cart_items, only: [:index, :create, :update, :destroy]
+    delete 'cart_items/all_destroy'
 
     get 'customers/out_confirmation'
     patch 'customers/out_update'

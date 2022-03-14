@@ -15,7 +15,7 @@
   <td>税込み価格<br>(税込)</td>
   <td><%= @item.with_tax_price %>円</td>
 
-<% if @item.is_active == false %>
+<% if @item.is_active == true %>
   <%= form_with model: @cart_item, url: public_cart_items_path, method: :post do |f| %>
     <%= f.hidden_field :item_id, value: @item.id %>
     <%= f.select :amount, options_for_select((1..10).to_a), include_blank: "個数選択" %>

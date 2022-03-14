@@ -13,6 +13,24 @@ class Public::CartItemsController < ApplicationController
     redirect_to public_items_path, notice: "カートに追加されました"
   end
   
+  def update
+    @cart_item = CartItem.find(params[:id])
+    @cart_item.update
+    redirect_to public_cart_items_path(current_customer.id)
+  end
+  
+  def destroy
+    @cart_item = CartItem.find(params[:id])
+    @cart_item.destroy
+    redirect_to public_cart_items_path(current_customer.id)
+  end
+  
+  def all_destroy
+    @cart_items = current_customer.cart_items
+    @cart_items.destroy_all
+    redirect_to public_cart_items_path(current_customer.id)
+  end
+  
   private
   def cart_item_params
       params.require(:cart_item).permit(:item_id, :amount)
