@@ -4,12 +4,14 @@ class Public::OrdersController < ApplicationController
   end
   
   def order_confirmation
-    @order = Order.new(params)
+    @order = Order.new(order_params)
     @order.customer_id = current_customer.id
-    @order.save
-    redirect_to public_order_path
   end
-
+  
+  def create
+    
+  end
+  
   def complete
   end
 
