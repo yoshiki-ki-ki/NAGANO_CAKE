@@ -6,6 +6,10 @@ class Public::OrdersController < ApplicationController
   def order_confirmation
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
+    @cart_items = current_customer.cart_items.all
+    @order.postage = 800
+    @total_price = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
+    @total_payment = @order.postage + @total_price
   end
   
   def create
