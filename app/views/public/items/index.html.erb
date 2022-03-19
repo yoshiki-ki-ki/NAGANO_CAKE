@@ -26,22 +26,23 @@
         <% @items.each do |item| %>
           <div class="col-lg-3">
             <table class="table table-borderless">
-                <tr>
-                  <td>
-                    <%= link_to public_item_path(item.id) do %>
-                      <%= image_tag item.image, size: "100x100" %>
-                    <% end %>
-                  </td>
-                </tr>
-                <tr>
-                  <td><%= item.name %></td>
-                </tr>
-                <tr>
-                  <td><%= item.price %></td>
-                </tr>
+              <tr>
+                <td>
+                  <%= link_to public_item_path(item.id) do %>
+                    <%= image_tag item.image, size: "100x100" %>
+                  <% end %>
+                </td>
+              </tr>
+              <tr>
+                <td><%= item.name %></td>
+              </tr>
+              <tr>
+                <td><%= item.price %></td>
+              </tr>
             </table>
           </div>
         <% end %>
+        <%= paginate @items %>
       </div>
     </div>
   </div>

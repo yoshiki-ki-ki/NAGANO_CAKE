@@ -3,7 +3,7 @@ class Public::ItemsController < ApplicationController
     @genres = Genre.all
     # nameに何かが入っていれば「Genre.find(params[:name])」該当のジャンルを表示させる。
     # nameに何も入っていなければItem.allすべての商品を表示
-    @items = params[:name].present? ? Genre.find(params[:name]).items : Item.all
+    @items = params[:name].present? ? Genre.find(params[:name]).items.page(params[:page]) : Item.page(params[:page])
   end
 
   def show
