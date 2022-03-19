@@ -10,6 +10,7 @@ class Public::CartItemsController < ApplicationController
     # 外部キーに値を入れなければデータの保存ができない
     @cart_item.customer_id = current_customer.id
     @cart_item.save
+    redirect_to public_cart_items_path(current_customer.id)
   end
   
   def update
