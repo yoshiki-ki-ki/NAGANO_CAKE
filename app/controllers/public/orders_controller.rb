@@ -20,9 +20,15 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
+    @orders = current_customer.orders
   end
 
   def show
+    @order = Order.find(params[:id])
+    @order.postage = 800
+    @total_price = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
+    @total_payment = @order.postage + @total_price
+    @order_detail = @order.prder_details
   end
   
   private

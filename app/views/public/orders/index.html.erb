@@ -1,9 +1,9 @@
 <div class="container">
-  <h4>注文履歴</h4>
+  <h4>注文履歴一覧</h4>
   <div class="row">
-    <table class=table>
+    <table class="table table-bordered">
       <thead>
-        <tr>
+        <tr class="table-active">
           <th>注文日</th>
           <th>配送先</th>
           <th>注文商品</th>
@@ -13,14 +13,26 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
+        <% @orders.each do |order|%>
+          <tr>
+            <!--注文日-->
+            <td><%= order.create_at %></td>
+            <!--配送先-->
+            <td><%= order.address %></td>
+            <!--注文商品一覧-->
+            <td>
+              <% order.order_details.each do |order_detail| %>
+                <%= order_detail.item.name %>
+              <% end %>
+            </td>
+            <!--支払金額-->
+            <td><%= order.total_payment.round.to_s(:delimited) %></td>
+            <!--ステータス-->
+            <td><%= order.order_status %></td>
+            <!--注文詳細へのリンク-->
+            <td><%= link_to '表示する', public_order_path %></td>
+          </tr>
+        <% end %>
       </tbody>
     </table>
   </div>
