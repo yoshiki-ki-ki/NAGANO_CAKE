@@ -6,7 +6,7 @@
         <table class="table table-bordered">
           <tr>
             <th class="table-active">注文日</th>
-            <td><%= @order.create_at %></td>
+            <td><%= @order.created_at.strftime('%Y/%m/%d %H:%M') %></td>
           </tr>
           <tr>
             <th class="table-active">配送先</th>
@@ -14,11 +14,11 @@
           </tr>
           <tr>
             <th class="table-active">支払方法</th>
-            <td><%= @order.payment_method %></td>
+            <td><%= @order.payment_method_i18n %></td>
           </tr>
           <tr>
             <th class="table-active">ステータス</th>
-            <td><%= @order.order_status %></td>
+            <td><%= @order.order_status_i18n %></td>
           </tr>
         </table>
       </div>
@@ -61,7 +61,7 @@
             <!--個数-->
             <td><%= order_detail.amount %></td>
             <!--小計-->
-            <td><%= order_detail.%></td>
+            <td><%= order_detail.subtotal %></td>
           </tr>
         <% end %>
       </tbody>
