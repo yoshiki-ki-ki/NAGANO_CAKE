@@ -13,7 +13,10 @@ class Public::OrdersController < ApplicationController
   end
   
   def create
-    
+    @order = Order.new(order_params)
+    @order.customer_id = current_customer.id
+    @order.save
+    redirect_to public_orders_complete_path
   end
   
   def complete
@@ -28,7 +31,7 @@ class Public::OrdersController < ApplicationController
     @order.postage = 800
     @total_price = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
     @total_payment = @order.postage + @total_price
-    @order_detail = @order.prder_details
+    @order_detail = @order.prder_details.all
   end
   
   private

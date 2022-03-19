@@ -10,8 +10,8 @@ Rails.application.routes.draw do
     post 'orders/order_confirmation'
     resources :orders, only: [:new, :create, :index, :show]
 
-    resources :cart_items, only: [:index, :create, :update, :destroy]
     delete 'cart_items/all_destroy'
+    resources :cart_items, only: [:index, :create, :update, :destroy]
 
     get 'customers/out_confirmation'
     patch 'customers/out_update'
