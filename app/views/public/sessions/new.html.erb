@@ -6,18 +6,20 @@
         <tr>
           <th>会員の方はこちらからログイン</th>
         </tr>
+      </table>
+      <table class="table table-borderless">
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        
+
           <tr class="field">
             <th><%= f.label :メールアドレス %></th>
             <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
           </tr>
-          
+
           <tr class="field">
             <th><%= f.label :パスワード %></th>
             <td><%= f.password_field :password, autocomplete: "current-password" %></td>
           </tr>
-          
+
           <tr class="actions">
             <td><%= f.submit "ログイン" %></td>
           </tr>
@@ -29,7 +31,7 @@
     <div class="col-7 mx-auto">
       <table>
         <tr>
-          <th>会員登録がお済でない方</th>
+          <th>会員登録がお済みでない方</th>
         </tr>
         <tr>
           <td>
