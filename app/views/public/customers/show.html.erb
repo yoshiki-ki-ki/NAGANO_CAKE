@@ -1,31 +1,55 @@
-<h1>マイページ</h1>
-<h3>登録情報</h3>
-<%= link_to '編集する', edit_public_customer_path(current_customer.id), class: "btn btn-success btn-lg" %>
-<tr>
-  <th>氏名</th>
-  <td><%= @address.last_name %><%= @address.first_name %></td>
-</tr>
-<tr>
-  <th>カナ</th>
-  <td><%= @address.last_name_kana %><%= @address.first_name_kana %></td>
-</tr>
-<tr>
-  <th>郵便番号</th>
-  <td><%= @address.postal_code %></td>
-</tr>
-<tr>
-  <th>住所</th>
-  <td><%= @address.address %></td>
-</tr>
-<tr>
-  <th>電話番号</th>
-  <td><%= @address.telephone_number %></td>
-</tr>
-<tr>
-  <th>メールアドレス</th>
-  <td><%= @address.email %></td>
-</tr>
-<h3>配送先</h3>
-<%= link_to '一覧を見る', public_addresses_path(current_customer.id), class: "btn btn-primary btn-lg" %>
-<h3>注文履歴</h3>
-<%= link_to '一覧を見る', public_orders_path(current_customer.id), class: "btn btn-primary btn-lg" %>
+<div class="container">
+  <h3>マイページ</h3>
+  <div class="row">
+    <table>
+      <tr>
+        <th>登録情報　　</th>
+        <td><%= link_to '編集する', edit_public_customer_path(current_customer.id), class: "btn btn-success btn-lg" %></td>
+      </tr>
+    </table>
+  </div>
+  <div class="row">
+    <table class="table table-bordered">
+      <tr>
+        <th class="table-active">氏名</th>
+        <td><%= @address.last_name %><%= @address.first_name %></td>
+      </tr>
+      <tr>
+        <th class="table-active">カナ</th>
+        <td><%= @address.last_name_kana %><%= @address.first_name_kana %></td>
+      </tr>
+      <tr>
+        <th class="table-active">郵便番号</th>
+        <td><%= @address.postal_code %></td>
+      </tr>
+      <tr>
+        <th class="table-active">住所</th>
+        <td><%= @address.address %></td>
+      </tr>
+      <tr>
+        <th class="table-active">電話番号</th>
+        <td><%= @address.telephone_number %></td>
+      </tr>
+      <tr>
+        <th class="table-active">メールアドレス</th>
+        <td><%= @address.email %></td>
+      </tr>
+    </table>
+  </div>
+  <div class="row">
+    <table>
+      <tr>
+        <th>配送先　　　</th>
+        <td><%= link_to '一覧を見る', public_addresses_path(current_customer.id), class: "btn btn-primary btn-lg" %></td>
+      </tr>
+    </table>
+  </div>
+  <div class="row">
+    <table>
+      <tr>
+        <th>注文履歴　　</th>
+        <td><%= link_to '一覧を見る', public_orders_path(current_customer.id), class: "btn btn-primary btn-lg" %></td>
+      </tr>
+    </table>
+  </div>
+</div>
