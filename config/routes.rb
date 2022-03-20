@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  
+
   root to: 'public/homes#top'
-      
+
   ##顧客
   namespace :public do
     resources :addresses, only: [:index, :create, :edit, :update, :destroy]
@@ -21,14 +21,16 @@ Rails.application.routes.draw do
 
     get '/about' => 'homes#about'
   end
-  
+
   ##管理者
   namespace :admin do
+    patch 'orders/orders_update'
+    patch 'orders/production_update'
     resources :orders, only: [:show]
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
-    get '/' => 'homes#top' 
+    get '/' => 'homes#top'
   end
   # 顧客用
   # URL /customers/sign_in ...
@@ -36,7 +38,7 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
-  
+
   # 管理者用
   # URL /admin/sign_in ...
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
