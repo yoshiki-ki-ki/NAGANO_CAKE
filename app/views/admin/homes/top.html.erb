@@ -15,18 +15,21 @@
           <tr>
             <!--購入日時-->
             <td>
-              <% link_to admin_order_path(order.id) do %>
+              <%= link_to admin_order_path(order.id) do %>
                 <%= order.created_at.strftime('%Y/%m/%d %H:%M') %>
               <% end %>
             </td>
             <!--購入者-->
             <td><%= order.name %></td>
             <!--注文個数-->
-            <td><%#= order.order_details.amount %></td>
+            <td><%= order.order_details.sum(:amount) %></td>
             <!--注文ステータス-->
-            <td><% order.order_status_i18n %></td>
+            <td><%= order.order_status_i18n %></td>
           </tr>
         <% end %>
+          <tr>
+            <td><%= paginate @orders %></td>
+          </tr>
       </tbody>
     </table>
   </div>
