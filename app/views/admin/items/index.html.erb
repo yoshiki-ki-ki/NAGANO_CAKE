@@ -38,7 +38,9 @@
             <% end %>
           </tr> 
         <% end %>
-        <%= paginate @items %>
+        <tr>
+          <td><%= paginate @items %>
+        </tr>
       </tbody>
     </table>
   </div>
