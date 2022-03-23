@@ -24,8 +24,10 @@ Rails.application.routes.draw do
 
   ##管理者
   namespace :admin do
-    patch 'orders/orders_update'
-    patch 'orders/production_update'
+   # patch 'orders/orders_update/id'
+    patch 'orders/orders_update/:id' => 'orders#orders_update', as: 'orders_orders_update'
+    patch 'orders/production_update/:id' => 'orders#production_update', as: 'orders_production_update'
+
     resources :orders, only: [:show]
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
