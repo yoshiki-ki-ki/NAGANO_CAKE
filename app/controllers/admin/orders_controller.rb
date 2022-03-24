@@ -10,6 +10,7 @@ class Admin::OrdersController < ApplicationController
   def orders_update
     @order = Order.find(params[:id])
     if @order.update(order_params)
+      # 注文ステータスが入金確認の時、すべての商品の製作ステータスを製作中に更新する
       @order.order_details.update_all(making_status:'awaiting_manufacture') if @order.order_status == 'payment_confirmation'
     end
     redirect_to admin_order_path(@order.id)
@@ -17,12 +18,14 @@ class Admin::OrdersController < ApplicationController
 
   def production_update
     @order_detail = OrderDetail.find(params[:id])
+    @order = @order_detail.order
+    @order_details = @order.order_details
     @order_detail.update(order_detail_params)
-    if @order_detail.order.find_by(order_status:'under_manufacture').present?
-      @order_detail.order.update(order_status:'under_manufacture')
+    if @order_details.find_by(making_status:'under_manufacture').present?
+      @order.update(order_status:'under_manufacture')
     end
-    if @order_detail.order.where(making_status:3).count == @order_detail.count
-      @order_detail.order.update(order_status:3)
+    if @order_details.where(making_status:'completion_of_production').count == @order_details.count
+      @order.update(order_status:'preparing_to_ship')
     end
     redirect_to admin_order_path(@order_detail.order.id)
   end
