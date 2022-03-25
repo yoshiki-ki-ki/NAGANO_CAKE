@@ -17,13 +17,19 @@ class Admin::OrdersController < ApplicationController
   end
 
   def production_update
+    # "1つ"のorder_detailデータを取り出す
     @order_detail = OrderDetail.find(params[:id])
+    # 取り出したorder_detailに紐づくorder情報を持ってくる
     @order = @order_detail.order
+    # order情報に紐づいたorder_details（複数のデータ）を持ってくる　※後にorder_detailの全体の動きを見る必要があるため
     @order_details = @order.order_details
+    # "1つ"のデータの更新を行う
     @order_detail.update(order_detail_params)
+    # 製作ステータスが一つでも製作中になったら、注文ステータスも製作中に更新する
     if @order_details.find_by(making_status:'under_manufacture').present?
       @order.update(order_status:'under_manufacture')
     end
+    # 製作ステータスの製作完了の数が@orde_detailsの持っている商品個数と同じになったら、注文ステータスを発送準備中に更新
     if @order_details.where(making_status:'completion_of_production').count == @order_details.count
       @order.update(order_status:'preparing_to_ship')
     end
