@@ -18,11 +18,11 @@
             <!--注文日-->
             <td><%= order.created_at.strftime('%Y/%m/%d %H:%M') %></td>
             <!--配送先-->
-            <td><%= order.address %></td>
+            <td><%= order.postal_code %><br><%= order.address %><br><%= order.name %></td>
             <!--注文商品一覧-->
             <td>
               <% order.order_details.each do |order_detail| %>
-                <%= order_detail.item.name %>
+                <%= order_detail.item.name %><br>
               <% end %>
             </td>
             <!--支払金額-->
@@ -30,7 +30,7 @@
             <!--ステータス-->
             <td><%= order.order_status_i18n %></td>
             <!--注文詳細へのリンク-->
-            <td><%= link_to '表示する', public_order_path(order.id) %></td>
+            <td><%= link_to '表示する', public_order_path(order.id), class: "btn btn-primary" %></td>
           </tr>
         <% end %>
       </tbody>
