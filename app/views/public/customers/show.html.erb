@@ -40,7 +40,7 @@
     <table>
       <tr>
         <th>配送先　　　</th>
-        <td><%= link_to '一覧を見る', public_addresses_path(current_customer.id), class: "btn btn-primary btn-lg" %></td>
+        <td><%= link_to '一覧を見る', public_addresses_path(current_customer.id),data: {"turbolinks"=>false}, class: "btn btn-primary" %></td>
       </tr>
     </table>
   </div>
@@ -48,7 +48,7 @@
     <table>
       <tr>
         <th>注文履歴　　</th>
-        <td><%= link_to '一覧を見る', public_orders_path(current_customer.id), class: "btn btn-primary btn-lg" %></td>
+        <td><%= link_to '一覧を見る', public_orders_path(current_customer.id), class: "btn btn-primary" %></td>
       </tr>
     </table>
   </div>

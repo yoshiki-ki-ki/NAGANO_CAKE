@@ -16,7 +16,7 @@
           </tr>
           <% end %>
         </tbody>
-      </table>  
+      </table>
     </div>
     <div class="col-lg-9">
       <div class="text-center m-5">
@@ -42,7 +42,7 @@
         <table class="table table-borderless">
           <tr>
             <td>
-              <%= link_to public_item_path(item.id) do %>
+              <%= link_to public_item_path(item.id),data: {"turbolinks"=>false} do %>
                 <%= image_tag item.image, size: "100x100" %>
               <% end %>
             </td>
@@ -51,7 +51,7 @@
             <td><%= item.name %></td>
           </tr>
           <tr>
-            <td><%= item.price %></td>
+            <td>￥<%= item.price.round.to_s(:delimited) %></td>
           </tr>
         </table>
       </div>
@@ -61,7 +61,7 @@
     <table class="table table-borderless">
       <tr>
         <td class="text-right">
-          <%= link_to 'すべての商品を見る>', public_items_path %>
+          <%= link_to 'すべての商品を見る>', public_items_path,data: {"turbolinks"=>false} %>
         </td>
       </tr>
     </table>
