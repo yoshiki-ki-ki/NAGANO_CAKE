@@ -30,14 +30,14 @@
                 <td>
                   <%= link_to public_item_path(item.id) do %>
                     <%= image_tag item.image, size: "100x100" %>
-                  <% end %>n
+                  <% end %>
                 </td>
               </tr>
               <tr>
                 <td><%= item.name %></td>
               </tr>
               <tr>
-                <td><%= item.price %></td>
+                <td><%= item.price.round.to_s(:delimited) %></td>
               </tr>
             </table>
           </div>
