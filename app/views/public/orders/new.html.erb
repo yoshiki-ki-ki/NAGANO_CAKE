@@ -21,7 +21,7 @@
       <strong><%= f.label :postal_address, "お届け先" %></strong>
         <tr>
           <td>
-            <%= f.radio_button :postal_address, '1' %>
+            <%= f.radio_button :postal_address, 1 %>
             <%= f.label :postal_address, "ご自身の住所", value: 1 %>
           </td>
         </tr>
@@ -35,18 +35,18 @@
       <table class="table table-borderless">
         <tr>
           <td>
-            <%= f.radio_button :postal_address, '2' %>
+            <%= f.radio_button :postal_address, 2 %>
             <%= f.label :postal_address, "登録済住所から選択", value: 2 %>
           </td>
         </tr>
         <tr>
-          <td><%= f.select :postal_address, options_from_collection_for_select(current_customer.addresses, :id, :address_display) %></td>
+          <td><%= f.select :selected_address, options_from_collection_for_select(current_customer.addresses, :id, :address_display) %></td>
         </tr>
       </table>
       <table class="table table-borderlenss">
         <tr>
           <td>
-            <%= f.radio_button :postal_address, '3' %>
+            <%= f.radio_button :postal_address, 3 %>
             <%= f.label :postal_address, "新しいお届け先", value: 3 %>
           </td>
         </tr>

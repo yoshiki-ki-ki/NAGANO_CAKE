@@ -2,7 +2,7 @@ class Public::OrdersController < ApplicationController
   def new
     @order = Order.new
   end
-  
+
   def order_confirmation
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
@@ -10,8 +10,19 @@ class Public::OrdersController < ApplicationController
     @order.postage = 800
     @total_price = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
     @total_payment = @order.postage + @total_price
+
+    if params[:order][:postal_address] == "1"
+      @order.postal_code = current_customer.postal_code
+      @order.address = current_customer.address
+      @order.name = current_customer.last_name + current_customer.first_name
+    elsif params[:order][:postal_address] == "2"
+      @address = Address.find(params[:order][:selected_address])
+      @order.postal_code = @address.postal_code
+      @order.address = @address.address
+      @order.name = @address.name
+    end
   end
-  
+
   def create
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
@@ -36,7 +47,7 @@ class Public::OrdersController < ApplicationController
     @cart_items.destroy_all
     redirect_to public_orders_complete_path
   end
-  
+
   def complete
   end
 
@@ -51,7 +62,7 @@ class Public::OrdersController < ApplicationController
     @total_price = @order_detail.inject(0) { |sum, item| sum + item.subtotal }
     @total_payment = @order.postage + @total_price
   end
-  
+
   private
   def order_params
       params.require(:order).permit(:postal_code, :address, :name, :payment_method, :total_payment, :postage, :order_status)
